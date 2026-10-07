@@ -7,7 +7,8 @@ class HttpQuestRunner:
     def __init__(self, host_address):
         self._host = host_address
 
-    def _receive_all(self, sock_instance):
+    @staticmethod
+    def _receive_all(sock_instance):
         buffer = bytearray()
         while True:
             chunk = sock_instance.recv(4096)
