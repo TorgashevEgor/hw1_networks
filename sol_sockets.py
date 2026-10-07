@@ -44,8 +44,10 @@ class HttpQuestRunner:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((self._host, 80))
 
-        cookie_header = "; ".join(f"{k}={v}" for k, v in cookies.items())
-        custom_headers = "".join(f"{k}: {v}\r\n" for k, v in headers.items())
+        cookie_header = "; ".join(f"{key}={value}" for key, value in cookies.items())
+        custom_headers = "".join(
+            f"{key}: {value}\r\n" for key, value in headers.items()
+        )
         query_suffix = "?" + urlencode(query_params) if query_params else ""
 
         lines = [
@@ -95,7 +97,7 @@ class HttpQuestRunner:
         if files is None:
             files = {}
 
-        boundary_id = "BoundaryDataNode777"
+        boundary_id = "Boundary67"
         chunks = []
         for name, text_content in files.items():
             chunks.append(f"--{boundary_id}\r\n".encode("utf-8"))
